@@ -23,12 +23,7 @@ Company
 * Name
 * Description
 * Address
-
-Service
-* Id
-* CompanyId
-* Description
-* Cost
+* Service
 
 User
 * Id
