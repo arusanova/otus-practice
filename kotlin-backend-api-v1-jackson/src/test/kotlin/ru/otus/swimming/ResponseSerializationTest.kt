@@ -39,7 +39,7 @@ class ResponseSerializationTest {
         assertContains(json, Regex("\"address\":\\s*\"${orderCreateRequest.order?.address}\""))
         assertContains(json, Regex("\"service\":\\s*\"${orderCreateRequest.order?.service}\""))
         assertContains(json, Regex("\"requestType\":\\s*\"${orderCreateRequest.requestType}\""))
-        assertContains(json, Regex("\"dateTime\":\\s*\"2011-12-03T10:15:30\\+01:00\""))
+        assertContains(json, Regex("\"dateTime\":\\s*\"2023-09-01T21:00:00\\+01:00\""))
     }
 
     @Test
