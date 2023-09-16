@@ -65,7 +65,8 @@ private fun ClSrvOrder.toTransportOrder(): OrderResponseObject = OrderResponseOb
     userId = userId.takeIf { it != ClSrvUserId.NONE }?.asString(),
     companyId = companyId.takeIf { it != ClSrvCompanyId.NONE }?.asString(),
     address = address,
-    dateTime = dateTime.toString()
+    dateTime = dateTime.toString(),
+    service = service
 )
 
 private fun List<ClSrvError>.toTransportErrors(): List<ru.otus.swimming.api.v1.models.Error>? = this
