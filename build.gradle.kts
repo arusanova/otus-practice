@@ -3,7 +3,7 @@ plugins {
 }
 
 allprojects {
-    group = "ru.otus"
+    group = "ru.otus.swimming"
     version = "1.0-SNAPSHOT"
 
     repositories {

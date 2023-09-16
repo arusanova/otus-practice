@@ -14,7 +14,7 @@ Order
 * Id
 * CompanyId
 * UserId
-* ServiceId
+* Service
 * Date
 * Address
 
