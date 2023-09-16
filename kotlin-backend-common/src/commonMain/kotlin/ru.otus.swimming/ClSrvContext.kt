@@ -9,7 +9,7 @@ import ru.otus.swimming.models.ClSrvState
 import ru.otus.swimming.models.ClSrvWorkMode
 import ru.otus.swimming.stubs.ClSrvStubs
 
-data class ClSrvContext (
+data class ClSrvContext(
     var command: ClSrvCommand = ClSrvCommand.NONE,
     var state: ClSrvState = ClSrvState.NONE,
     val errors: MutableList<ClSrvError> = mutableListOf(),
@@ -21,5 +21,8 @@ data class ClSrvContext (
     var timeStart: Instant = Instant.NONE,
     var orderRequest: ClSrvOrder = ClSrvOrder(),
     var orderResponse: ClSrvOrder = ClSrvOrder(),
-    val ordersResponse: MutableList<ClSrvOrder> = mutableListOf()
+    val ordersResponse: MutableList<ClSrvOrder> = mutableListOf(),
+
+    var orderValidating: ClSrvOrder = ClSrvOrder(),
+    var orderValidated: ClSrvOrder = ClSrvOrder()
 )

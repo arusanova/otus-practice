@@ -4,10 +4,10 @@ import kotlinx.datetime.Instant
 import ru.otus.swimming.NONE
 
 data class ClSrvOrder (
-    val userId: ClSrvUserId = ClSrvUserId.NONE,
-    val companyId: ClSrvCompanyId = ClSrvCompanyId.NONE,
-    val id: ClSrvOrderId = ClSrvOrderId.NONE,
-    val dateTime: Instant = Instant.NONE,
-    val address: String = "",
-    val service: String = "",
+    var userId: ClSrvUserId = ClSrvUserId.NONE,
+    var companyId: ClSrvCompanyId = ClSrvCompanyId.NONE,
+    var id: ClSrvOrderId = ClSrvOrderId.NONE,
+    var dateTime: Instant = Instant.NONE,
+    var address: String = "",
+    var service: String = "",
 )
