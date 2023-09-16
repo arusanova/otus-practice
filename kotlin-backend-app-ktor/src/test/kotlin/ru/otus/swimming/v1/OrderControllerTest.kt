@@ -92,7 +92,7 @@ class OrderControllerTest {
             requestType = "searchByCompanyId",
             requestId = UUID.randomUUID().toString(),
             debug = OrderDebug(mode = OrderRequestDebugMode.STUB, stub = OrderRequestDebugStubs.SUCCESS),
-            order = OrderSearchByCompanyIdObject(companyId = "1")
+            order = OrderSearchByCompanyIdObject(companyId = "123")
         )
 
         val response = client.post("/v1/order/searchByCompanyId") {
@@ -117,7 +117,7 @@ class OrderControllerTest {
             requestType = "searchByUserId",
             requestId = UUID.randomUUID().toString(),
             debug = OrderDebug(mode = OrderRequestDebugMode.STUB, stub = OrderRequestDebugStubs.SUCCESS),
-            order = OrderSearchByUserIdObject(userId = "1")
+            order = OrderSearchByUserIdObject(userId = "123")
         )
 
         val response = client.post("/v1/order/searchByUserId") {
