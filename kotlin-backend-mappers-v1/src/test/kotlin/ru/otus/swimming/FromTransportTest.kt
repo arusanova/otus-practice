@@ -33,7 +33,7 @@ class FromTransportTest {
                 userId = "123",
                 companyId = "123",
                 address = "Москва, ул Зорге 3к1",
-                dateTime = "2023-09-01T21:00:00+01:00",
+                dateTime = "2023-09-01T20:00:00Z",
                 service = "Аквакомплекс Лужники"
             )
         )
