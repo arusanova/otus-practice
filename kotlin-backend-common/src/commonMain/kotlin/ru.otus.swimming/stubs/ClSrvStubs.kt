@@ -5,9 +5,7 @@ enum class ClSrvStubs {
     SUCCESS,
     NOT_FOUND,
     BAD_ID,
-    BAD_TITLE,
-    BAD_DESCRIPTION,
-    BAD_VISIBILITY,
-    CANNOT_DELETE,
-    BAD_SEARCH_STRING,
+    BAD_COMPANY_ID,
+    BAD_USER_ID,
+    BAD_DATE_TIME
 }

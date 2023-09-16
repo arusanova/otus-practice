@@ -116,7 +116,7 @@ class ToTransportTest {
 
         // then
         assertEquals(expected = context.requestId.asString(), actual = createTransport.requestId)
-        assertEquals(expected = "search_by_company_id", actual = createTransport.responseType)
+        assertEquals(expected = "searchByCompanyId", actual = createTransport.responseType)
         assertEquals(expected = context.ordersResponse.first().userId.asString(), actual = createTransport.orders!!.first().userId)
         assertEquals(expected = context.ordersResponse.first().companyId.asString(), actual = createTransport.orders!!.first().companyId)
         assertEquals(expected = context.ordersResponse.first().address, actual = createTransport.orders!!.first().address)
@@ -152,7 +152,7 @@ class ToTransportTest {
 
         // then
         assertEquals(expected = context.requestId.asString(), actual = createTransport.requestId)
-        assertEquals(expected = "search_by_user_id", actual = createTransport.responseType)
+        assertEquals(expected = "searchByUserId", actual = createTransport.responseType)
         assertEquals(expected = context.ordersResponse.first().userId.asString(), actual = createTransport.orders!!.first().userId)
         assertEquals(expected = context.ordersResponse.first().companyId.asString(), actual = createTransport.orders!!.first().companyId)
         assertEquals(expected = context.ordersResponse.first().address, actual = createTransport.orders!!.first().address)

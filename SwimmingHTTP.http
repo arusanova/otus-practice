@@ -1,0 +1,71 @@
+POST localhost:8080/v1/order/searchByUserId
+Content-Type: application/json
+
+{
+  "requestType": "searchByUserId",
+  "requestId": "cf3fc490-61ea-49f4-8c5c-7c17b58ac795",
+  "debug": {
+    "mode": "stub",
+    "stub": "success"
+  },
+  "order": {
+    "userId" : "123"
+  }
+}
+
+###
+
+POST localhost:8080/v1/order/searchByCompanyId
+Content-Type: application/json
+
+{
+  "requestType": "searchByCompanyId",
+  "requestId": "cf3fc490-61ea-49f4-8c5c-7c17b58ac795",
+  "debug": {
+    "mode": "stub",
+    "stub": "success"
+  },
+  "order": {
+    "companyId" : "123"
+  }
+}
+
+###
+
+POST localhost:8080/v1/order/create
+Content-Type: application/json
+
+{
+  "requestType": "create",
+  "requestId": "cf3fc490-61ea-49f4-8c5c-7c17b58ac795",
+  "debug": {
+    "mode": "stub",
+    "stub": "success"
+  },
+  "order": {
+    "userId": "123",
+    "companyId": "123",
+    "address": "Москва, ул Зорге 3к1",
+    "dateTime": "2023-09-01T21:00:00Z",
+    "service": "Аквакомплекс Лужники"
+  }
+}
+
+###
+
+POST localhost:8080/v1/order/readById
+Content-Type: application/json
+
+{
+  "requestType": "read",
+  "requestId": "cf3fc490-61ea-49f4-8c5c-7c17b58ac795",
+  "debug": {
+    "mode": "stub",
+    "stub": "success"
+  },
+  "order": {
+    "id" : "123"
+  }
+}
+
+
