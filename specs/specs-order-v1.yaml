@@ -1,0 +1,347 @@
+openapi: 3.0.4
+info:
+  title: "Swimming pool booking service ${VERSION_APP}"
+  description: This is a swimming training reservation service
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080/v1
+tags:
+  - name: order
+    description: Сервис покупки абонементов в бассейн
+paths:
+  /order/create:
+    post:
+      tags:
+        - order
+      summary: create order
+      operationId: orderCreate
+      requestBody:
+        description: Request body
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderCreateRequest'
+        required: true
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderCreateResponse'
+  /order/readById:
+    post:
+      tags:
+        - order
+      summary: Read order by id
+      operationId: orderRead
+      requestBody:
+        description: Request body
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderReadRequest'
+        required: true
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderReadResponse'
+
+  /order/searchByUserId:
+    post:
+      tags:
+        - order
+      summary: Search order by user id
+      operationId: orderSearchByUserId
+      requestBody:
+        description: Request body
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderSearchByUserIdRequest'
+        required: true
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderSearchByUserIdResponse'
+
+  /order/searchCompanyId:
+    post:
+      tags:
+        - order
+      summary: Search order by company id
+      operationId: orderSearchByCompanyId
+      requestBody:
+        description: Request body
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderSearchByCompanyIdRequest'
+        required: true
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderSearchByCompanyIdResponse'
+
+components:
+  schemas:
+
+    IRequest:
+      type: object
+      description: Базовый интерфейс для всех запросов
+      properties:
+        requestType:
+          type: string
+          description: Поле-дескриминатор для вычисления типа запроса
+          example: create
+        requestId:
+          type: string
+          description: Идентификатор запроса для отладки
+      discriminator:
+        propertyName: requestType
+        mapping:
+          create: '#/components/schemas/OrderCreateRequest'
+          read:   '#/components/schemas/OrderReadRequest'
+          searchByUserId: '#/components/schemas/OrderSearchByUserIdRequest'
+          searchByCompanyId: '#/components/schemas/OrderSearchByCompanyIdRequest'
+
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        group:
+          type: string
+        field:
+          type: string
+        message:
+          type: string
+
+    ResponseResult:
+      type: string
+      enum:
+        - success
+        - error
+
+    IResponse:
+      type: object
+      description: Базовый интерфейс для всех ответов
+      properties:
+        responseType:
+          type: string
+          description: Поле-дескриминатор для вычисления типа запроса
+          example: create
+        requestId:
+          type: string
+          description: Идентификатор запроса для отладки
+        result:
+          $ref: '#/components/schemas/ResponseResult'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+
+      discriminator:
+        propertyName: responseType
+        mapping:
+          create: '#/components/schemas/OrderCreateResponse'
+          read: '#/components/schemas/OrderReadResponse'
+          searchByUserId: '#/components/schemas/OrderSearchByUserIdResponse'
+          searchByCompanyId: '#/components/schemas/OrderSearchByCompanyIdResponse'
+
+
+    UserId:
+      type: string
+      description: Идентификатор пользователя
+    CompanyId:
+      type: string
+      description: Идентификатор компании
+    Address:
+      type: string
+      description: Адрес
+    DateTime:
+      type: string
+      description: Дата-время
+    OrderId:
+      type: string
+      description: Иденификатор заказа
+    Service:
+      type: string
+      description: Описание услуги
+
+
+    OrderCreateObject:
+      type: object
+      description: Объект описывает свойства для создания заказа
+      properties:
+        userId:
+          $ref: '#/components/schemas/UserId'
+        companyId:
+          $ref: '#/components/schemas/CompanyId'
+        address:
+          $ref: '#/components/schemas/Address'
+        dateTime:
+          $ref: '#/components/schemas/DateTime'
+        service:
+          $ref: '#/components/schemas/Service'
+
+
+    OrderCreateRequest:
+      allOf:
+        - $ref: '#/components/schemas/IRequest'
+        - $ref: '#/components/schemas/OrderRequestDebug'
+        - type: object
+          properties:
+            order:
+              $ref: '#/components/schemas/OrderCreateObject'
+
+    OrderReadObject:
+      allOf:
+        - type: object
+          properties:
+            id:
+              $ref: '#/components/schemas/OrderId'
+
+    OrderReadRequest:
+      allOf:
+        - $ref: '#/components/schemas/IRequest'
+        - $ref: '#/components/schemas/OrderRequestDebug'
+        - type: object
+          properties:
+            order:
+              $ref: '#/components/schemas/OrderReadObject'
+
+    OrderSearchByUserIdObject:
+      allOf:
+        - type: object
+          properties:
+            userId:
+              $ref: '#/components/schemas/UserId'
+
+    OrderSearchByCompanyIdObject:
+      allOf:
+        - type: object
+          properties:
+            companyId:
+              $ref: '#/components/schemas/CompanyId'
+
+    OrderSearchByUserIdRequest:
+      allOf:
+        - $ref: '#/components/schemas/IRequest'
+        - $ref: '#/components/schemas/OrderRequestDebug'
+        - type: object
+          properties:
+            order:
+              $ref: '#/components/schemas/OrderSearchByUserIdObject'
+
+    OrderSearchByCompanyIdRequest:
+      allOf:
+        - $ref: '#/components/schemas/IRequest'
+        - $ref: '#/components/schemas/OrderRequestDebug'
+        - type: object
+          properties:
+            order:
+              $ref: '#/components/schemas/OrderSearchByCompanyIdObject'
+
+    OrderResponseObject:
+      allOf:
+        - type: object
+          description: Объект, который возвращается в ответе бэкенда
+          properties:
+            id:
+              $ref: '#/components/schemas/OrderId'
+            userId:
+              $ref: '#/components/schemas/UserId'
+            companyId:
+              $ref: '#/components/schemas/CompanyId'
+            address:
+              $ref: '#/components/schemas/Address'
+            dateTime:
+              $ref: '#/components/schemas/DateTime'
+            service:
+              $ref: '#/components/schemas/Service'
+
+    OrderResponseSingle:
+      allOf:
+        - type: object
+          description: Ответ с одним объектом заказа
+          properties:
+            order:
+              $ref: '#/components/schemas/OrderResponseObject'
+
+    OrderResponseMulti:
+      allOf:
+        - type: object
+          description: Список найденных объектов
+          properties:
+            orders:
+              type: array
+              items:
+                $ref: '#/components/schemas/OrderResponseObject'
+
+    OrderCreateResponse:
+      allOf:
+        - $ref: '#/components/schemas/IResponse'
+        - $ref: '#/components/schemas/OrderResponseSingle'
+
+    OrderReadResponse:
+      allOf:
+        - $ref: '#/components/schemas/IResponse'
+        - $ref: '#/components/schemas/OrderResponseSingle'
+
+    OrderSearchByUserIdResponse:
+      allOf:
+        - $ref: '#/components/schemas/IResponse'
+        - $ref: '#/components/schemas/OrderResponseMulti'
+
+    OrderSearchByCompanyIdResponse:
+      allOf:
+        - $ref: '#/components/schemas/IResponse'
+        - $ref: '#/components/schemas/OrderResponseMulti'
+
+    # STUBS ======================
+    OrderRequestDebugMode:
+      type: string
+      enum:
+        - prod
+        - test
+        - stub
+
+    OrderRequestDebug:
+      type: object
+      properties:
+        debug:
+          $ref: '#/components/schemas/OrderDebug'
+
+    OrderDebug:
+      type: object
+      properties:
+        mode:
+          $ref: '#/components/schemas/OrderRequestDebugMode'
+        stub:
+          $ref: '#/components/schemas/OrderRequestDebugStubs'
+
+    OrderRequestDebugStubs:
+      type: string
+      description: Перечисления всех стабов
+      enum:
+        - success
+        - notFound
+        - badId
+        - badTitle
+        - badDescription
+        - badVisibility
+        - cannotDelete
+        - badSearchString

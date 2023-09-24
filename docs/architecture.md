@@ -14,7 +14,7 @@ Order
 * Id
 * CompanyId
 * UserId
-* ServiceId
+* Service
 * Date
 * Address
 
@@ -23,12 +23,7 @@ Company
 * Name
 * Description
 * Address
-
-Service
-* Id
-* CompanyId
-* Description
-* Cost
+* Service
 
 User
 * Id
