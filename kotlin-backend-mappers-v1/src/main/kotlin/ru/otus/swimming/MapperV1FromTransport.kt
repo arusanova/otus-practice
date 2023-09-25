@@ -94,10 +94,8 @@ private fun OrderDebug?.transportToStubCase(): ClSrvStubs = when (this?.stub) {
     OrderRequestDebugStubs.SUCCESS -> ClSrvStubs.SUCCESS
     OrderRequestDebugStubs.NOT_FOUND -> ClSrvStubs.NOT_FOUND
     OrderRequestDebugStubs.BAD_ID -> ClSrvStubs.BAD_ID
-    OrderRequestDebugStubs.BAD_TITLE -> ClSrvStubs.BAD_TITLE
-    OrderRequestDebugStubs.BAD_DESCRIPTION -> ClSrvStubs.BAD_DESCRIPTION
-    OrderRequestDebugStubs.BAD_VISIBILITY -> ClSrvStubs.BAD_VISIBILITY
-    OrderRequestDebugStubs.CANNOT_DELETE -> ClSrvStubs.CANNOT_DELETE
-    OrderRequestDebugStubs.BAD_SEARCH_STRING -> ClSrvStubs.BAD_SEARCH_STRING
+    OrderRequestDebugStubs.BAD_COMPANY_ID -> ClSrvStubs.BAD_COMPANY_ID
+    OrderRequestDebugStubs.BAD_USER_ID -> ClSrvStubs.BAD_USER_ID
+    OrderRequestDebugStubs.BAD_DATE_TIME -> ClSrvStubs.BAD_DATE_TIME
     null -> ClSrvStubs.NONE
 }
