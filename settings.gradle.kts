@@ -9,6 +9,8 @@ include("kotlin-backend-app-ktor")
 include("kotlin-backend-biz")
 include("kotlin-backend-stubs")
 
+include("kotlin-backend-app-kafka")
+
 pluginManagement {
     val kotlinVersion: String by settings
     val openapiVersion: String by settings
