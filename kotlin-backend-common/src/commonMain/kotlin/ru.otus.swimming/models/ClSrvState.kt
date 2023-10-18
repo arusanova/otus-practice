@@ -4,4 +4,5 @@ enum class ClSrvState {
     NONE,
     RUNNING,
     FAILING,
+    FINISHING,
 }

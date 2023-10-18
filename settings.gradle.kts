@@ -11,6 +11,8 @@ include("kotlin-backend-stubs")
 
 include("kotlin-backend-app-kafka")
 
+include("kotlin-backend-lib-cor")
+
 pluginManagement {
     val kotlinVersion: String by settings
     val openapiVersion: String by settings
