@@ -1,12 +1,25 @@
 package ru.otus.swimming
 
+import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
 import ru.otus.swimming.models.ClSrvCompanyId
 import ru.otus.swimming.models.ClSrvOrder
 import ru.otus.swimming.models.ClSrvOrderId
+import ru.otus.swimming.models.ClSrvOrderLock
 import ru.otus.swimming.models.ClSrvUserId
+import java.util.*
 
 object ClSrvStub {
+    fun get() = ClSrvOrder(
+        userId = ClSrvUserId(id = "123"),
+        companyId = ClSrvCompanyId(id = "123"),
+        id = ClSrvOrderId(id = "123"),
+        dateTime = Clock.System.now(),
+        address = "Москва, ул Зорге 3к1",
+        lock = ClSrvOrderLock(id = UUID.randomUUID().toString())
+
+    )
+
     fun createOrderStub(clSrvRequest: ClSrvOrder): ClSrvOrder {
         return ClSrvOrder(
             userId = ClSrvUserId(id = clSrvRequest.userId.asString()),
