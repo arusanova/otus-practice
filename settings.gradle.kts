@@ -13,6 +13,11 @@ include("kotlin-backend-app-kafka")
 
 include("kotlin-backend-lib-cor")
 
+include("kotlin-backend-repo-in-memory")
+include("kotlin-backend-repo-test")
+include("kotlin-backend-repo-postgresql")
+include("kotlin-backend-repo-stubs")
+
 pluginManagement {
     val kotlinVersion: String by settings
     val openapiVersion: String by settings
@@ -29,3 +34,5 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
+include("kotlin-backend-repo-in-memory")
+include("kotlin-backend-repo-test")

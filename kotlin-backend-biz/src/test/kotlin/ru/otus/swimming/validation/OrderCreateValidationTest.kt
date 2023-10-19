@@ -6,6 +6,7 @@ import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
 import org.junit.Test
 import ru.otus.swimming.ClSrvContext
+import ru.otus.swimming.ClSrvCorSettings
 import ru.otus.swimming.ClSrvProcessor
 import ru.otus.swimming.NONE
 import ru.otus.swimming.models.ClSrvCommand
@@ -15,8 +16,10 @@ import ru.otus.swimming.models.ClSrvOrderId
 import ru.otus.swimming.models.ClSrvState
 import ru.otus.swimming.models.ClSrvUserId
 import ru.otus.swimming.models.ClSrvWorkMode
+import ru.otus.swimming.repo.stub.OrderStub
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
+
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class OrderCreateValidationTest {
@@ -24,7 +27,7 @@ class OrderCreateValidationTest {
         command = ClSrvCommand.CREATE
         workMode = ClSrvWorkMode.TEST
     }
-    private val processor = ClSrvProcessor()
+    private val processor = ClSrvProcessor(ClSrvCorSettings(repoTest = OrderStub()))
 
     @Test
     fun incorrectUserId() = runTest {

@@ -15,6 +15,8 @@ dependencies {
     implementation(project(":kotlin-backend-stubs"))
     implementation(project(":kotlin-backend-lib-cor"))
 
+    implementation(project(":kotlin-backend-repo-stubs"))
+
 
     testImplementation(kotlin("test-junit"))
 }

@@ -10,4 +10,5 @@ data class ClSrvOrder (
     var dateTime: Instant = Instant.NONE,
     var address: String = "",
     var service: String = "",
+    var lock: ClSrvOrderLock = ClSrvOrderLock.NONE,
 )
